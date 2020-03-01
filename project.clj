@@ -6,7 +6,8 @@
   :dependencies [[org.clojure/clojure "1.10.1"]
                 [json-schema "0.2.0-RC11"]
                 [cheshire "5.6.3"]
-                [clj-commons/clj-yaml "0.7.0"]]
+                [clj-commons/clj-yaml "0.7.0"]
+                [org.clojure/core.match "1.0.0"]]
   :main ^:skip-aot circle-ci-config-linter.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
