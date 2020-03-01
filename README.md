@@ -7,7 +7,7 @@ This tool was made possible because of:
 - [Schemastore](https://github.com/SchemaStore/schemastore/)
 - [json-schema.clj](https://github.com/niquola/json-schema.clj)
 
-The Schemastore spec used for this can be found in [/resources/circle-ci-schema.json](https://github.com/20k-ultra/circle-ci-config-linter/blob/master/resources/circle-ci-schema.json). I had to modify it slightly because the origin was causing json-schema.clj to throw some errors.
+The Schemastore spec used for this can be found in [/resources/circle-ci-schema.json](https://github.com/20k-ultra/circle-ci-config-linter/blob/master/resources/circle-ci-schema.json). I had to modify it slightly because the original was causing json-schema.clj to throw some errors.
 
 ### Building
 
