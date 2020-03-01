@@ -6,9 +6,6 @@
             [clj-yaml.core :as yaml]
             [clojure.core.match :refer [match]]))
 
-(def REPO "CircleCI-Public/circleci-cli")
-(def BRANCH "master")
-
 (defn read-json [path] (json/parse-string (slurp path) keyword))
 (defn read-yml [path] (yaml/parse-string (slurp path)))
 
@@ -27,12 +24,22 @@
 
 (defn -main
   [& args]
+
+  (def REPO (first args))
+  (def BRANCH "master")
+
   (try
     (def config (read-yml (str "https://raw.githubusercontent.com/" REPO "/" BRANCH "/.circleci/config.yml")))
-    (catch java.io.FileNotFoundException e (def config nil)))
+    (catch java.io.FileNotFoundException e (def config nil))
+    (catch Exception e (def config nil) (println (str "Caught: " (.toString e)))))
+
   (if (nil? config)
-    (println (make-button false "no config"))
+    (let [svg (make-button false "no config")]
+      (println svg)
+      svg)
     (let [schema (read-json (.getPath (io/resource "circle-ci-schema.json")))
         errors (:errors (sch/validate schema config))
         error-count (count errors)]
-    (println (make-button (= error-count 0) (str error-count " errors"))))))
+      (let [svg (make-button (= error-count 0) (str error-count " errors"))]
+        (println svg)
+        svg))))

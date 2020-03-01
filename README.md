@@ -2,6 +2,28 @@
 
 Lint a [CircleCI](https://circleci.com/) config file from a github repository. You can learn more about CircleCI config options at [docs](https://circleci.com/docs/2.0/configuration-reference/).
 
+### Building
+
+```bash
+$ lein install
+$ lein test
+```
+
+### Usage
+
+The following command will ouput an SVG to sdout. You can save this in a file to be used later but the plan is to host this as a service on AWS Lambda so any repository can lint their configs!
+
+```bash
+$ lein run "CircleCI-Public/circleci-cli"
+```
+
+### To do
+
+- make this run on Lambda with [lambada](https://github.com/uswitch/lambada)
+- add more button styles (See [shields.io](https://shields.io))
+
+### Built with
+
 This tool was made possible because of:
 
 - [Schemastore](https://github.com/SchemaStore/schemastore/)
@@ -9,17 +31,6 @@ This tool was made possible because of:
 
 The Schemastore spec used for this can be found in [/resources/circle-ci-schema.json](https://github.com/20k-ultra/circle-ci-config-linter/blob/master/resources/circle-ci-schema.json). I had to modify it slightly because the original was causing json-schema.clj to throw some errors.
 
-### Building
-
-```bash
-$ lein install
-$ lein run
-```
-
-### To do
-
-- make this run on Lambda with [lambada](https://github.com/uswitch/lambada)
-- see why original schema-store spec for circleci config upsets json-schema.clj
 
 ## License
 

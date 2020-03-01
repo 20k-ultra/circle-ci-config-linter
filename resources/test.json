@@ -1,0 +1,8 @@
+{
+  "id": 44,
+  "price": 2.99,
+  "greetings": [ "hello", "hi", "good morning"],
+  "country": {
+    "name": "Canada"
+  }
+}
