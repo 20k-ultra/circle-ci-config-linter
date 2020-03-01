@@ -2,6 +2,8 @@
 
 Lint a [CircleCI](https://circleci.com/) config file from a github repository. You can learn more about CircleCI config options at [docs](https://circleci.com/docs/2.0/configuration-reference/).
 
+![alt text](demo.svg "Output for 'Juxt/Jinx'")
+
 ### Building
 
 ```bash
