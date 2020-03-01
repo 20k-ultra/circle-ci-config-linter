@@ -27,8 +27,12 @@
 
 (defn -main
   [& args]
-  (let [schema (read-json (.getPath (io/resource "circle-ci-schema.json")))
-        config (read-yml (str "https://raw.githubusercontent.com/" REPO "/" BRANCH "/.circleci/config.yml"))
+  (try
+    (def config (read-yml (str "https://raw.githubusercontent.com/" REPO "/" BRANCH "/.circleci/config.yml")))
+    (catch java.io.FileNotFoundException e (def config nil)))
+  (if (nil? config)
+    (println (make-button false "no config"))
+    (let [schema (read-json (.getPath (io/resource "circle-ci-schema.json")))
         errors (:errors (sch/validate schema config))
         error-count (count errors)]
-    (println (make-button (= error-count 0) (str error-count " errors")))))
+    (println (make-button (= error-count 0) (str error-count " errors"))))))
