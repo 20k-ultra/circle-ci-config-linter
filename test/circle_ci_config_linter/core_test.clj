@@ -40,12 +40,12 @@
 
 (deftest test-linting-no-config
   (testing
-    (is (= plastic-button-with-no-config (-main)))))
+    (is (= {:body plastic-button-with-no-config} (handle-event {"queryStringParameters" {}})))))
 
 (deftest test-linting-no-error-default-style-config
   (testing
-    (is (= plastic-button-good-config (-main "juxt/jinx")))))
+    (is (= {:body plastic-button-good-config} (handle-event {"queryStringParameters" {"repo" "juxt/jinx"}})))))
 
 (deftest test-linting-error-default-style-config
   (testing
-    (is (= plastic-button-some-errors-config (-main "CircleCI-Public/circleci-cli")))))
+    (is (= {:body plastic-button-some-errors-config} (handle-event {"queryStringParameters" {"repo" "CircleCI-Public/circleci-cli"}})))))

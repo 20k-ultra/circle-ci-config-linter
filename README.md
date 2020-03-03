@@ -1,8 +1,28 @@
 # circle-ci-config-linter
 
-Lint a [CircleCI](https://circleci.com/) config file from a github repository. You can learn more about CircleCI config options at [docs](https://circleci.com/docs/2.0/configuration-reference/).
+Add a lint errors badge on your repos [CircleCI](https://circleci.com/) config. You can learn more about CircleCI config options at [docs](https://circleci.com/docs/2.0/configuration-reference/).
 
-![alt text](demo.svg "Output for 'Juxt/Jinx'")
+### Making your own
+
+Replace {{YOUR-REPOSITORY}} to your profile or org and repository name.
+
+```
+[![CircleCI-Linter](https://qnld475cd3.execute-api.us-east-2.amazonaws.com/beta?repo={{YOUR-REPOSITORY}})](https://github.com/20k-ultra/circle-ci-config-linter)
+```
+
+### Examples
+
+[CircleCI-Public / circleci-cli](https://github.com/CircleCI-Public/circleci-cli/blob/master/.circleci/config.yml)
+
+[![CircleCI-Linter](https://qnld475cd3.execute-api.us-east-2.amazonaws.com/beta?repo=CircleCI-Public/circleci-cli)](https://github.com/20k-ultra/circle-ci-config-linter)
+
+[juxt / jinx](https://github.com/juxt/jinx//blob/master/.circleci/config.yml)
+
+[![CircleCI-Linter](https://qnld475cd3.execute-api.us-east-2.amazonaws.com/beta?repo=juxt/jinx)](https://github.com/20k-ultra/circle-ci-config-linterl)
+
+Repo without CircleCI config
+
+[![CircleCI-Linter](https://qnld475cd3.execute-api.us-east-2.amazonaws.com/beta?repo=DNSCrypt/dnscrypt-proxy)](https://github.com/20k-ultra/circle-ci-config-linter)
 
 ### Building
 
@@ -11,17 +31,9 @@ $ lein install
 $ lein test
 ```
 
-### Usage
-
-The following command will ouput an SVG to sdout. You can save this in a file to be used later but the plan is to host this as a service on AWS Lambda so any repository can lint their configs!
-
-```bash
-$ lein run "CircleCI-Public/circleci-cli"
-```
-
 ### To do
 
-- make this run on Lambda with [lambada](https://github.com/uswitch/lambada)
+- allow for passing parameter so that details about errors are returned instead of an SVG.
 - add more button styles (See [shields.io](https://shields.io))
 
 ### Built with

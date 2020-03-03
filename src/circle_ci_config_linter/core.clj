@@ -1,12 +1,13 @@
 (ns circle-ci-config-linter.core
-  (:refer-clojure :exclude [load])
-  (:require [json-schema.core :as sch]
-            [cheshire.core :as json]
+  (:require [uswitch.lambada.core :refer [deflambdafn]]
+            [clojure.data.json :as json]
             [clojure.java.io :as io]
+            [json-schema.core :as sch]
+            [cheshire.core :as chesire]
             [clj-yaml.core :as yaml]
             [clojure.core.match :refer [match]]))
 
-(defn read-json [path] (json/parse-string (slurp path) keyword))
+(defn read-json [path] (chesire/parse-string (slurp path) keyword))
 (defn read-yml [path] (yaml/parse-string (slurp path)))
 
 (defn plastic-button [valid text-output]
@@ -21,10 +22,10 @@
   ([valid text-output]
     (make-button valid text-output :plastic)))
 
-(defn -main
-  [& args]
+(defn handle-event
+  [event]
 
-  (def REPO (first args))
+  (def REPO ((event "queryStringParameters") "repo"))
   (def BRANCH "master")
 
   (try
@@ -34,11 +35,16 @@
 
   (if (nil? config)
     (let [svg (make-button false "no config")]
-      (println svg)
-      svg)
+      (hash-map :body svg))
     (let [schema (read-json (.getPath (io/resource "circle-ci-schema.json")))
         errors (:errors (sch/validate schema config))
         error-count (count errors)]
       (let [svg (make-button (= error-count 0) (str error-count " errors"))]
-        (println svg)
-        svg))))
+        (hash-map :body svg)))))
+
+(deflambdafn circle-ci.lambda.linter
+  [in out ctx]
+  (let [event (json/read (io/reader in))
+        res (handle-event event)]
+    (with-open [w (io/writer out)]
+      (json/write res w))))
