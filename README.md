@@ -1,5 +1,9 @@
 # circle-ci-config-linter
 
+***NEW*: Checkout out the [lambda-function](https://github.com/20k-ultra/circle-ci-config-linter/tree/lambda-function) branch to see how you can make a badge for your repository by using my AWS Lambda.**
+
+---
+
 Lint a [CircleCI](https://circleci.com/) config file from a github repository. You can learn more about CircleCI config options at [docs](https://circleci.com/docs/2.0/configuration-reference/).
 
 ![alt text](demo.svg "Output for 'Juxt/Jinx'")
@@ -21,7 +25,7 @@ $ lein run "CircleCI-Public/circleci-cli"
 
 ### To do
 
-- make this run on Lambda with [lambada](https://github.com/uswitch/lambada)
+- ~~make this run on Lambda with [lambada](https://github.com/uswitch/lambada)~~ (see [lambda-function](https://github.com/20k-ultra/circle-ci-config-linter/tree/lambda-function) branch)
 - add more button styles (See [shields.io](https://shields.io))
 
 ### Built with
