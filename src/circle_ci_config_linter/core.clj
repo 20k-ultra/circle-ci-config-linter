@@ -19,8 +19,7 @@
       [:plastic] (plastic-button valid text-output)
       :else (plastic-button valid text-output)))
   ([valid text-output]
-    (make-button valid text-output :plastic))
-)
+    (make-button valid text-output :plastic)))
 
 (defn -main
   [& args]
