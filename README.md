@@ -1,12 +1,13 @@
 # circle-ci-config-linter
 
-***NEW*: Checkout out the [lambda-function](https://github.com/20k-ultra/circle-ci-config-linter/tree/lambda-function) branch to see how you can make a badge for your repository by using my AWS Lambda.**
+[![CircleCI](https://circleci.com/gh/20k-ultra/circle-ci-config-linter.svg?style=shield)](https://circleci.com/gh/20k-ultra/circle-ci-config-linter)
+[![CircleCI-Linter](https://qnld475cd3.execute-api.us-east-2.amazonaws.com/beta?repo=20k-ultra/circle-ci-config-linter)](https://github.com/20k-ultra/circle-ci-config-linter)
+
+***NEW*: Checkout out the [lambda-function](https://github.com/20k-ultra/circle-ci-config-linter/tree/lambda-function) branch to see how you can make a badge for your repository by using my AWS Lambda. The above badge is from that.**
 
 ---
 
 Lint a [CircleCI](https://circleci.com/) config file from a github repository. You can learn more about CircleCI config options at [docs](https://circleci.com/docs/2.0/configuration-reference/).
-
-![alt text](demo.svg "Output for 'Juxt/Jinx'")
 
 ### Building
 
@@ -29,9 +30,7 @@ $ lein run "CircleCI-Public/circleci-cli"
 - add more button styles (See [shields.io](https://shields.io))
 - add CircleCI AWS [CLI](https://circleci.com/orbs/registry/orb/circleci/aws-cli) or [Serverless](https://circleci.com/orbs/registry/orb/circleci/aws-sam-serverless) Orbs to automatically deploy builds
 
-### Built with
-
-This tool was made possible because of:
+### Mentions
 
 - [Schemastore](https://github.com/SchemaStore/schemastore/)
 - [json-schema.clj](https://github.com/niquola/json-schema.clj)
