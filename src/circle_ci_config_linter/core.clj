@@ -23,15 +23,12 @@
 
 (defn -main
   [& args]
-
   (def REPO (first args))
   (def BRANCH "master")
-
   (try
     (def config (read-yml (str "https://raw.githubusercontent.com/" REPO "/" BRANCH "/.circleci/config.yml")))
     (catch java.io.FileNotFoundException e (def config nil))
     (catch Exception e (def config nil) (println (str "Caught: " (.toString e)))))
-
   (if (nil? config)
     (let [svg (make-button false "no config")]
       (println svg)
