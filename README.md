@@ -27,6 +27,7 @@ $ lein run "CircleCI-Public/circleci-cli"
 
 - ~~make this run on Lambda with [lambada](https://github.com/uswitch/lambada)~~ (see [lambda-function](https://github.com/20k-ultra/circle-ci-config-linter/tree/lambda-function) branch)
 - add more button styles (See [shields.io](https://shields.io))
+- add CircleCI AWS [CLI](https://circleci.com/orbs/registry/orb/circleci/aws-cli) or [Serverless](https://circleci.com/orbs/registry/orb/circleci/aws-sam-serverless) Orbs to automatically deploy builds
 
 ### Built with
 
