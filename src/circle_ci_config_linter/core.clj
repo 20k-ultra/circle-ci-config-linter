@@ -24,7 +24,7 @@
 
 (defn handle-event
   [event]
-  (def REPO ((event "queryStringParameters") "repo"))
+  (def REPO (get-in event ["queryStringParameters" "repo"]))
   (def BRANCH "master")
   (try
     (def config (read-yml (str "https://raw.githubusercontent.com/" REPO "/" BRANCH "/.circleci/config.yml")))
