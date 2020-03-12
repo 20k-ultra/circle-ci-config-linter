@@ -3,8 +3,7 @@
   (:require [json-schema.core :as sch]
             [cheshire.core :as json]
             [clojure.java.io :as io]
-            [clj-yaml.core :as yaml]
-            [clojure.core.match :refer [match]]))
+            [clj-yaml.core :as yaml]))
 
 (defn read-json [path] (json/parse-string (slurp path) keyword))
 (defn read-yml [path] (yaml/parse-string (slurp path)))
@@ -15,9 +14,9 @@
 
 (defn make-button
   ([valid text-output style]
-    (match [style]
-      [:plastic] (plastic-button valid text-output)
-      :else (plastic-button valid text-output)))
+    (case style
+      :plastic (plastic-button valid text-output)
+      (plastic-button valid text-output)))
   ([valid text-output]
     (make-button valid text-output :plastic)))
 
