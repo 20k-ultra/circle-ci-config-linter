@@ -34,8 +34,7 @@
       (println svg)
       svg)
     (let [schema (read-json (.getPath (io/resource "circle-ci-schema.json")))
-        errors (:errors (sch/validate schema config))
-        error-count (count errors)]
+        error-count (-> (sch/validate schema config) (:errors) (count))]
       (let [svg (make-button (= error-count 0) (str error-count " errors"))]
         (println svg)
         svg))))
